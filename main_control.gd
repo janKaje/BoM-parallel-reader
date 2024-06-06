@@ -16,17 +16,17 @@ static func set_scrollval(new_scrollval):
 	scrollval = new_scrollval
 
 
-static var eng_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\eng_new.json")
-static var spa_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\spa_new.json")
-static var pes_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\pes_new.json")
-static var deu_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\deu_new.json")
-static var fra_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\fra_new.json")
-static var ind_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\ind_new.json")
-static var ita_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\ita_new.json")
-static var jpn_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\jpn_new.json")
-static var kor_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\kor_new.json")
-static var swe_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\swe_new.json")
-static var zhs_json_str = FileAccess.get_file_as_string("C:\\Users\\kyleh\\Documents\\BoM parallel reader\\zhs_new.json")
+static var eng_json_str = FileAccess.get_file_as_string("res://languages/eng_new.json")
+static var spa_json_str = FileAccess.get_file_as_string("res://languages/spa_new.json")
+static var pes_json_str = FileAccess.get_file_as_string("res://languages/pes_new.json")
+static var deu_json_str = FileAccess.get_file_as_string("res://languages/deu_new.json")
+static var fra_json_str = FileAccess.get_file_as_string("res://languages/fra_new.json")
+static var ind_json_str = FileAccess.get_file_as_string("res://languages/ind_new.json")
+static var ita_json_str = FileAccess.get_file_as_string("res://languages/ita_new.json")
+static var jpn_json_str = FileAccess.get_file_as_string("res://languages/jpn_new.json")
+static var kor_json_str = FileAccess.get_file_as_string("res://languages/kor_new.json")
+static var swe_json_str = FileAccess.get_file_as_string("res://languages/swe_new.json")
+static var zhs_json_str = FileAccess.get_file_as_string("res://languages/zhs_new.json")
 
 static var ref_1 = "1-ne 1"
 static var ref_2 = "1-ne 1"
@@ -51,15 +51,6 @@ static func switch_lock():
 		locked = false
 	else:
 		locked = true
-
-
-static var maxlines = []
-
-static func set_maxlines(newmaxlines):
-	maxlines = newmaxlines
-
-static func set_maxline(newentry, idx):
-	maxlines[idx] = newentry
 
 static var languages = [
 	"Chinese (simplified)",
