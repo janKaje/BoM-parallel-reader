@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfrxi224tyxhn"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_id1js"]
+[ext_resource type="Texture2D" uid="uid://bscvfhi16sq51" path="res://bom_reader_bkgd.png" id="2_v7hsx"]
+[ext_resource type="Script" path="res://Side_1.gd" id="3_esaqd"]
+[ext_resource type="Script" path="res://DisplayText1.gd" id="4_choui"]
+[ext_resource type="Script" path="res://Side_2.gd" id="4_foonh"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_id1js")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v7hsx")
+
+[node name="ButtonHolder" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.500868
+anchor_bottom = 1.0
+offset_right = 575.0
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSorter" type="HBoxContainer" parent="ButtonHolder"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="langauge 1" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose language"
+
+[node name="reference 1" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose reference"
+
+[node name="Lock_unlock" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Lock/unlock"
+
+[node name="reference 2" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose reference"
+
+[node name="langauge 2" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose language"
+
+[node name="Side_1" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = 58.0
+offset_right = -577.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("3_esaqd")
+
+[node name="DisplayText1" type="RichTextLabel" parent="Side_1"]
+layout_mode = 2
+script = ExtResource("4_choui")
+
+[node name="Side_2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = 58.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("4_foonh")
+
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1" method="_on_langauge_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 1" to="Side_1" method="_on_reference_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/Lock_unlock" to="." method="_on_lock_unlock_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 2" to="Side_2" method="_on_reference_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2" method="_on_langauge_2_pressed"]

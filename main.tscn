@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfrxi224tyxhn"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_id1js"]
+[ext_resource type="Texture2D" uid="uid://bscvfhi16sq51" path="res://bom_reader_bkgd.png" id="2_v7hsx"]
+[ext_resource type="Script" path="res://Lock_unlock.gd" id="3_x53sw"]
+[ext_resource type="Script" path="res://DisplayText1.gd" id="4_choui"]
+[ext_resource type="Script" path="res://LanguageSelect1.gd" id="5_o31v8"]
+[ext_resource type="Script" path="res://ReferenceSelect1.gd" id="6_sedeq"]
+[ext_resource type="Script" path="res://DisplayText2.gd" id="8_gnfoj"]
+[ext_resource type="Script" path="res://LanguageSelect2.gd" id="9_tiaf2"]
+[ext_resource type="Script" path="res://ReferenceSelect2.gd" id="10_rsqpq"]
+
+[sub_resource type="GDScript" id="GDScript_jq5xr"]
+script/source = "extends MarginContainer
+
+
+func _ready():
+	pass
+
+func _on_langauge_1_pressed():
+	pass # Replace with function body.
+
+
+func _on_reference_1_pressed():
+	pass # Replace with function body.
+"
+
+[sub_resource type="GDScript" id="GDScript_v1ucu"]
+script/source = "extends MarginContainer
+
+
+
+
+func _on_reference_2_pressed():
+	pass # Replace with function body.
+
+
+func _on_langauge_2_pressed():
+	pass # Replace with function body.
+"
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_id1js")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v7hsx")
+
+[node name="ButtonHolder" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ButtonSorter" type="HBoxContainer" parent="ButtonHolder"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="langauge 1" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose language"
+
+[node name="reference 1" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose reference"
+
+[node name="Lock_unlock" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Sync"
+script = ExtResource("3_x53sw")
+
+[node name="reference 2" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose reference"
+
+[node name="langauge 2" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Choose language"
+
+[node name="Side_1" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 58.0
+offset_right = 577.0
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = SubResource("GDScript_jq5xr")
+metadata/_edit_use_anchors_ = true
+
+[node name="DisplayText1" type="RichTextLabel" parent="Side_1"]
+layout_mode = 2
+bbcode_enabled = true
+script = ExtResource("4_choui")
+
+[node name="LanguageSelect1" type="ItemList" parent="Side_1"]
+layout_mode = 2
+script = ExtResource("5_o31v8")
+
+[node name="ReferenceSelect1" type="ItemList" parent="Side_1"]
+layout_mode = 2
+script = ExtResource("6_sedeq")
+
+[node name="Side_2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = 58.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = SubResource("GDScript_v1ucu")
+
+[node name="DisplayText2" type="RichTextLabel" parent="Side_2"]
+layout_mode = 2
+bbcode_enabled = true
+script = ExtResource("8_gnfoj")
+
+[node name="LanguageSelect2" type="ItemList" parent="Side_2"]
+layout_mode = 2
+script = ExtResource("9_tiaf2")
+
+[node name="ReferenceSelect2" type="ItemList" parent="Side_2"]
+layout_mode = 2
+script = ExtResource("10_rsqpq")
+
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1/DisplayText1" method="_on_langauge_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1/LanguageSelect1" method="_on_langauge_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 1" to="Side_1" method="_on_reference_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 1" to="Side_1/DisplayText1" method="_on_reference_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 1" to="Side_1/ReferenceSelect1" method="_on_reference_1_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/Lock_unlock" to="." method="_on_lock_unlock_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/Lock_unlock" to="ButtonHolder/ButtonSorter/Lock_unlock" method="_on_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 2" to="Side_2" method="_on_reference_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 2" to="Side_2/DisplayText2" method="_on_reference_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 2" to="Side_2/ReferenceSelect2" method="_on_reference_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2" method="_on_langauge_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2/DisplayText2" method="_on_langauge_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2/LanguageSelect2" method="_on_langauge_2_pressed"]
+[connection signal="empty_clicked" from="Side_1/LanguageSelect1" to="Side_1/DisplayText1" method="_on_language_select_1_empty_clicked"]
+[connection signal="empty_clicked" from="Side_1/LanguageSelect1" to="Side_1/LanguageSelect1" method="_on_empty_clicked"]
+[connection signal="item_clicked" from="Side_1/LanguageSelect1" to="Side_1/DisplayText1" method="_on_item_list_item_clicked"]
+[connection signal="item_clicked" from="Side_1/LanguageSelect1" to="Side_1/LanguageSelect1" method="_on_item_clicked"]
+[connection signal="empty_clicked" from="Side_1/ReferenceSelect1" to="Side_1/DisplayText1" method="_on_reference_select_1_empty_clicked"]
+[connection signal="empty_clicked" from="Side_1/ReferenceSelect1" to="Side_1/ReferenceSelect1" method="_on_empty_clicked"]
+[connection signal="item_clicked" from="Side_1/ReferenceSelect1" to="Side_1/DisplayText1" method="_on_reference_select_1_item_clicked"]
+[connection signal="item_clicked" from="Side_1/ReferenceSelect1" to="Side_1/ReferenceSelect1" method="_on_item_clicked"]
+[connection signal="item_clicked" from="Side_1/ReferenceSelect1" to="Side_2/DisplayText2" method="_on_reference_select_1_item_clicked"]
+[connection signal="empty_clicked" from="Side_2/LanguageSelect2" to="Side_2/DisplayText2" method="_on_language_select_2_empty_clicked"]
+[connection signal="empty_clicked" from="Side_2/LanguageSelect2" to="Side_2/LanguageSelect2" method="_on_empty_clicked"]
+[connection signal="item_clicked" from="Side_2/LanguageSelect2" to="Side_2/DisplayText2" method="_on_language_select_2_item_clicked"]
+[connection signal="item_clicked" from="Side_2/LanguageSelect2" to="Side_2/LanguageSelect2" method="_on_item_clicked"]
+[connection signal="empty_clicked" from="Side_2/ReferenceSelect2" to="Side_2/DisplayText2" method="_on_reference_select_2_empty_clicked"]
+[connection signal="empty_clicked" from="Side_2/ReferenceSelect2" to="Side_2/ReferenceSelect2" method="_on_empty_clicked"]
+[connection signal="item_clicked" from="Side_2/ReferenceSelect2" to="Side_1/DisplayText1" method="_on_reference_select_2_item_clicked"]
+[connection signal="item_clicked" from="Side_2/ReferenceSelect2" to="Side_2/DisplayText2" method="_on_reference_select_2_item_clicked"]
+[connection signal="item_clicked" from="Side_2/ReferenceSelect2" to="Side_2/ReferenceSelect2" method="_on_item_clicked"]
