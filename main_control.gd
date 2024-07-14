@@ -15,7 +15,6 @@ static var scrollval:float = 0.0
 static func set_scrollval(new_scrollval):
 	scrollval = new_scrollval
 
-
 static var eng_json_str = FileAccess.get_file_as_string("res://languages/eng_new.json")
 static var spa_json_str = FileAccess.get_file_as_string("res://languages/spa_new.json")
 static var pes_json_str = FileAccess.get_file_as_string("res://languages/pes_new.json")

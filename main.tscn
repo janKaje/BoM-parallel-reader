@@ -72,7 +72,7 @@ theme_override_constants/margin_bottom = 12
 [node name="ButtonSorter" type="HBoxContainer" parent="ButtonHolder"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 100
+theme_override_constants/separation = 90
 alignment = 1
 
 [node name="langauge 1" type="Button" parent="ButtonHolder/ButtonSorter"]
@@ -95,6 +95,10 @@ text = "Choose reference"
 [node name="langauge 2" type="Button" parent="ButtonHolder/ButtonSorter"]
 layout_mode = 2
 text = "Choose language"
+
+[node name="Quit" type="Button" parent="ButtonHolder/ButtonSorter"]
+layout_mode = 2
+text = "Quit"
 
 [node name="Side_1" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -152,6 +156,9 @@ script = ExtResource("9_tiaf2")
 layout_mode = 2
 script = ExtResource("10_rsqpq")
 
+[connection signal="ready" from="." to="ButtonHolder/ButtonSorter/Lock_unlock" method="_on_main_ready"]
+[connection signal="ready" from="." to="Side_1/DisplayText1" method="_on_main_ready"]
+[connection signal="ready" from="." to="Side_2/DisplayText2" method="_on_main_ready"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1/DisplayText1" method="_on_langauge_1_pressed"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1/LanguageSelect1" method="_on_langauge_1_pressed"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 1" to="Side_1" method="_on_reference_1_pressed"]
@@ -165,6 +172,7 @@ script = ExtResource("10_rsqpq")
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2" method="_on_langauge_2_pressed"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2/DisplayText2" method="_on_langauge_2_pressed"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 2" to="Side_2/LanguageSelect2" method="_on_langauge_2_pressed"]
+[connection signal="pressed" from="ButtonHolder/ButtonSorter/Quit" to="." method="_on_quit_pressed"]
 [connection signal="empty_clicked" from="Side_1/LanguageSelect1" to="Side_1/DisplayText1" method="_on_language_select_1_empty_clicked"]
 [connection signal="empty_clicked" from="Side_1/LanguageSelect1" to="Side_1/LanguageSelect1" method="_on_empty_clicked"]
 [connection signal="item_clicked" from="Side_1/LanguageSelect1" to="Side_1/DisplayText1" method="_on_item_list_item_clicked"]

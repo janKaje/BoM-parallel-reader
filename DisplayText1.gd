@@ -15,6 +15,7 @@ func update_ref():
 	self.set_text(self.chapters[Globals.ref_1])
 	scroll_to_line(0)
 
+
 func update_lang():
 	var json = JSON.new()
 	var json_str = Globals.new().get("%s_json_str" % Globals.lang_1)
@@ -67,3 +68,5 @@ func _on_reference_select_2_item_clicked(index, at_position, mouse_button_index)
 		update_ref()
 		self.show()
 
+func _on_main_ready():
+	update_lang()

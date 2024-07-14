@@ -67,3 +67,7 @@ func _on_reference_select_1_item_clicked(index, at_position, mouse_button_index)
 		Globals.set_ref_2(Globals.chapter_code_list[index])
 		update_ref()
 		self.show()
+
+
+func _on_main_ready():
+	update_lang()
