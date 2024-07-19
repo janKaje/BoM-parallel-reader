@@ -15,23 +15,14 @@ static var scrollval:float = 0.0
 static func set_scrollval(new_scrollval):
 	scrollval = new_scrollval
 
-static var eng_json_str = FileAccess.get_file_as_string("res://languages/eng_new.json")
-static var spa_json_str = FileAccess.get_file_as_string("res://languages/spa_new.json")
-static var pes_json_str = FileAccess.get_file_as_string("res://languages/pes_new.json")
-static var deu_json_str = FileAccess.get_file_as_string("res://languages/deu_new.json")
-static var fra_json_str = FileAccess.get_file_as_string("res://languages/fra_new.json")
-static var ind_json_str = FileAccess.get_file_as_string("res://languages/ind_new.json")
-static var ita_json_str = FileAccess.get_file_as_string("res://languages/ita_new.json")
-static var jpn_json_str = FileAccess.get_file_as_string("res://languages/jpn_new.json")
-static var kor_json_str = FileAccess.get_file_as_string("res://languages/kor_new.json")
-static var swe_json_str = FileAccess.get_file_as_string("res://languages/swe_new.json")
-static var zhs_json_str = FileAccess.get_file_as_string("res://languages/zhs_new.json")
+static var ref_1:String = "1-ne 1"
+static var ref_2:String = "1-ne 1"
 
-static var ref_1 = "1-ne 1"
-static var ref_2 = "1-ne 1"
+static var lang_1:String = "eng"
+static var lang_2:String = "spa"
 
-static var lang_1 = "eng"
-static var lang_2 = "spa"
+static var lang_1_text:String = FileAccess.get_file_as_string("res://languages/eng.json")
+static var lang_2_text:String = FileAccess.get_file_as_string("res://languages/spa.json")
 
 static func set_ref_1(newref):
 	ref_1 = newref
@@ -40,10 +31,14 @@ static func set_ref_2(newref):
 	ref_2 = newref
 	
 static func set_lang_1(newlang):
-	lang_1 = newlang
+	if lang_1 != newlang:
+		lang_1 = newlang
+		lang_1_text = FileAccess.get_file_as_string("res://languages/%s.json" % newlang)
 
 static func set_lang_2(newlang):
-	lang_2 = newlang
+	if lang_2 != newlang:
+		lang_2 = newlang
+		lang_2_text = FileAccess.get_file_as_string("res://languages/%s.json" % newlang)
 
 static func switch_lock():
 	if locked:
@@ -51,35 +46,201 @@ static func switch_lock():
 	else:
 		locked = true
 
-static var languages = [
-	"Chinese (simplified)",
+static var languages:Array[String] = [
+	"Afrikaans",
+	"Albanian (Shqip)",
+	"Amharic (አማርኛ)",
+	"Armenian (Հայերեն)",
+	"Aymara (Aymar Aru)",
+	"Bislama",
+	"Bulgarian (Български)",
+	"Burmese (ဗမာစာ)",
+	"Catalan (Català)",
+	"Cebuano",
+	"Chuukese (Fosun Chuuk)",
+	"Croatian (Hrvatski)",
+	"Czech (Česky)",
+	"Danish (Dansk)",
+	"Dutch (Nederlands)",
 	"English",
-	"French",
-	"German",
-	"Indonesian",
-	"Italian",
-	"Japanese",
-	"Korean",
-	"Persian",
-	"Spanish",
-	"Swedish"
+	"Estonian (Eesti)",
+	"Fante",
+	"Fijian (Fiji Hindi)",
+	"Finnish (Suomi)",
+	"French (Français)",
+	"Georgian (ქართული)",
+	"German (Deutsch)",
+	"Greek (Ελληνικά)",
+	"Guarani (Guaraní Avañe'ẽ)",
+	"Haitian creole (Kreyòl Ayisyen)",
+	"Hawaiian (ʻŌlelo Hawaiʻi)",
+	"Hiligaynon",
+	"Hindi (हिन्दी)",
+	"Hmong (Hmoob)",
+	"Hungarian (Magyar)",
+	"Icelandic (íslenska)",
+	"Igbo (Ásụ̀sụ́ Ìgbò)",
+	"Ilocano (Ilokano)",
+	"Indonesian (Bahasa Indonesia)",
+	"Italian (Italiano)",
+	"Japanese (日本語)",
+	"Kekchi (Q'ekchi')",
+	"Khmer (ភាសាខ្មែរ)",
+	"Kichwa (Quichua)",
+	"Kinyarwanda",
+	"Kiribati",
+	"Korean (한국어)",
+	"Kosraean (Kahs Kosrae)",
+	"Lao (ພາສາລາວ)",
+	"Latvian (Latviešu)",
+	"Lingala (Lingála)",
+	"Lithuanian (Lietuvių)",
+	"Macedonian (Македонски)",
+	"Malagasy",
+	"Malay (Bahasa Melayu)",
+	"Maltese (Malti)",
+	"Mandarin Chinese, simplified (简体中文 - 普通话)",
+	"Mandarin Chinese, traditional (繁體中文 - 國語)",
+	"Maori (Te Reo Māori)",
+	"Marshallese (Kajin Majōl)",
+	"Mongolian (Монгол)",
+	"Nepali (नेपाली)",
+	"Norwegian (Norsk)",
+	"Pangasinan",
+	"Persian (فارسی)",
+	"Pohnpeian (Mahsen en Pohnpei)",
+	"Polish (Polski)",
+	"Portuguese, Brazilian (Português do Brasil)",
+	"Rarotongan (Māori Kuki Airani)",
+	"Romanian (Română)",
+	"Russian (Русский)",
+	"Samoan (Gagana Samoa)",
+	"Serbian (Српски)",
+	"Shona",
+	"Slovak (Slovenčina)",
+	"Slovenian (Slovenščina)",
+	"Spanish (Español)",
+	"Swahili (Kiswahili)",
+	"Swedish (Svenska)",
+	"Tagalog",
+	"Tahitian (Reo Tahiti)",
+	"Tamil (தமிழ்)",
+	"Telugu (తెలుగు)",
+	"Thai (ภาษาไทย)",
+	"Tok Pisin",
+	"Tongan (Faka-Tonga)",
+	"Tshiluba (Tshilubà)",
+	"Tswana (Setswana)",
+	"Turkish (Türkçe)",
+	"Twi",
+	"Ukrainian (Українська)",
+	"Urdu (اردو)",
+	"Vietnamese (Tiếng Việt)",
+	"Welsh (Cymraeg)",
+	"Xhosa (isiXhosa)",
+	"Yapese (Thin Nu Wa'ab)",
+	"Yoruba (Èdè Yorùbá)",
+	"Zulu (isiZulu)"
 ]
 
-static var language_codes = [
-	"zhs",
+static var language_codes:Array[String] = [
+	"afr",
+	"alb",
+	"amh",
+	"hye",
+	"aym",
+	"bis",
+	"bul",
+	"mya",
+	"cat",
+	"ceb",
+	"chk",
+	"hrv",
+	"ces",
+	"dan",
+	"nld",
 	"eng",
+	"est",
+	"fat",
+	"fij",
+	"fin",
 	"fra",
+	"kat",
 	"deu",
+	"ell",
+	"grn",
+	"hat",
+	"haw",
+	"hil",
+	"hin",
+	"hmn",
+	"hun",
+	"isl",
+	"ibo",
+	"ilo",
 	"ind",
 	"ita",
 	"jpn",
+	"kek",
+	"khm",
+	"qvi",
+	"kin",
+	"gil",
 	"kor",
+	"kos",
+	"lao",
+	"lav",
+	"lin",
+	"lit",
+	"mkd",
+	"mlg",
+	"msa",
+	"mlt",
+	"zhs",
+	"zho",
+	"mri",
+	"mah",
+	"mon",
+	"nep",
+	"nor",
+	"pag",
 	"pes",
+	"pon",
+	"pol",
+	"por",
+	"rar",
+	"ron",
+	"rus",
+	"smo",
+	"srp",
+	"sna",
+	"slk",
+	"slv",
 	"spa",
-	"swe"
+	"swa",
+	"swe",
+	"tgl",
+	"tah",
+	"tam",
+	"tel",
+	"tha",
+	"tpi",
+	"ton",
+	"lua",
+	"tsn",
+	"tur",
+	"twi",
+	"ukr",
+	"urd",
+	"vie",
+	"cym",
+	"xho",
+	"yap",
+	"yor",
+	"zul"
 ]
 
-static var chapter_list = ['Title Page',
+static var chapter_list:Array[String] = ['Title Page',
  'Title Page of the Book of Mormon',
  'Introduction',
  'Testimony of Three Witnesses',
@@ -326,7 +487,7 @@ static var chapter_list = ['Title Page',
  'Moroni 9',
  'Moroni 10']
 
-static var chapter_code_list = ['title-page 0',
+static var chapter_code_list:Array[String] = ['title-page 0',
  'bofm-title 0',
  'introduction 0',
  'three 0',

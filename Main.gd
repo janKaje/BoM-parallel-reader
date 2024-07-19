@@ -43,6 +43,9 @@ func loadsave():
 	
 func _ready():
 	loadsave()
+	
+	print(Globals.lang_1)
+	print(Globals.lang_2)
 
 func _on_quit_pressed():
 	quit()

@@ -5,7 +5,7 @@ var chapters = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var json = JSON.new()
-	var json_str = Globals.new().get("%s_json_str" % Globals.lang_1)
+	var json_str = Globals.lang_1_text
 	json.parse(json_str)
 	self.chapters = json.data
 	self.set_text(self.chapters[Globals.ref_1])
@@ -18,7 +18,7 @@ func update_ref():
 
 func update_lang():
 	var json = JSON.new()
-	var json_str = Globals.new().get("%s_json_str" % Globals.lang_1)
+	var json_str = Globals.lang_1_text
 	json.parse(json_str)
 	self.chapters = json.data
 	self.set_text(self.chapters[Globals.ref_1])
