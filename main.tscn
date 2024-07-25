@@ -158,7 +158,9 @@ script = ExtResource("10_rsqpq")
 
 [connection signal="ready" from="." to="ButtonHolder/ButtonSorter/Lock_unlock" method="_on_main_ready"]
 [connection signal="ready" from="." to="Side_1/DisplayText1" method="_on_main_ready"]
+[connection signal="ready" from="." to="Side_1/LanguageSelect1" method="_on_main_ready"]
 [connection signal="ready" from="." to="Side_2/DisplayText2" method="_on_main_ready"]
+[connection signal="ready" from="." to="Side_2/LanguageSelect2" method="_on_main_ready"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1/DisplayText1" method="_on_langauge_1_pressed"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/langauge 1" to="Side_1/LanguageSelect1" method="_on_langauge_1_pressed"]
 [connection signal="pressed" from="ButtonHolder/ButtonSorter/reference 1" to="Side_1" method="_on_reference_1_pressed"]

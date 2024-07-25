@@ -1,4 +1,4 @@
-# BoM-parallel-reader
+# Book of Mormon Parallel Reader
 
 ## Description
 

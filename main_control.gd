@@ -134,7 +134,6 @@ static var languages:Array[String] = [
 	"Turkish (Türkçe)",
 	"Twi",
 	"Ukrainian (Українська)",
-	"Urdu (اردو)",
 	"Vietnamese (Tiếng Việt)",
 	"Welsh (Cymraeg)",
 	"Xhosa (isiXhosa)",
@@ -231,7 +230,6 @@ static var language_codes:Array[String] = [
 	"tur",
 	"twi",
 	"ukr",
-	"urd",
 	"vie",
 	"cym",
 	"xho",
@@ -239,6 +237,22 @@ static var language_codes:Array[String] = [
 	"yor",
 	"zul"
 ]
+
+static var language_codes_downloaded:Array[String] = []
+static var languages_downloaded:Array[String] = []
+	
+static func get_corresponding_name(lang_code):
+	var idx:int = language_codes.find(lang_code)
+	return languages[idx]
+	
+static func get_corresponding_code(lang_name):
+	var idx:int = languages.find(lang_name)
+	return language_codes[idx]
+	
+static func add_downloaded_language(lang_code):
+	language_codes_downloaded.append(lang_code)
+	languages_downloaded.append(get_corresponding_name(lang_code))
+
 
 static var chapter_list:Array[String] = ['Title Page',
  'Title Page of the Book of Mormon',

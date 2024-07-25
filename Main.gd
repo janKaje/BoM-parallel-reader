@@ -1,5 +1,7 @@
 extends Control
 
+var dpath:String = ""
+
 func _on_lock_unlock_pressed():
 	Globals.switch_lock()
 
@@ -46,6 +48,29 @@ func _ready():
 	
 	print(Globals.lang_1)
 	print(Globals.lang_2)
+	
+	for lang_code in Globals.language_codes:
+		if FileAccess.file_exists("res://languages/%s.json" % lang_code):
+			Globals.add_downloaded_language(lang_code)
+	
+	
+	
+func download_new_lang(lang_code:String):
+	print("res://languages/%s.json" % lang_code)
+	self.dpath = "res://languages/%s.json" % lang_code
+	var http = HTTPRequest.new()
+	add_child(http)
+	http.request_completed.connect(_on_request_completed)
+	http.request("https://github.com/janKaje/Languages-of-the-Book-of-Mormon/raw/main/data/%s.json" % lang_code)
 
+func _on_request_completed(result, response_code, headers, body):
+	if result != OK:
+		push_error("Download Failed")
+	var text = body.get_string_from_utf8()
+	var downloadpath = FileAccess.open(self.dpath, FileAccess.WRITE)
+	downloadpath.store_string(text)
+	remove_child($HTTPRequest)
+	
+	
 func _on_quit_pressed():
 	quit()

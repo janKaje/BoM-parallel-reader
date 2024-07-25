@@ -33,7 +33,7 @@ func _process(delta):
 
 func _on_item_list_item_clicked(index, at_position, mouse_button_index): #language select
 	if mouse_button_index == 1:
-		Globals.set_lang_1(Globals.language_codes[index])
+		Globals.set_lang_1(Globals.language_codes_downloaded[index])
 		update_lang()
 		self.show()
 
